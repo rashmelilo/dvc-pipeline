@@ -61,7 +61,7 @@ print("Accuracy:", accuracy)
 
 
 param_dist = {"n_estimators": randint(50, 500), "max_depth": randint(1, 20)}
-rf = RandomForestClassifier()
+rf = RandomForestClassifier(random_state=2023)
 rand_search = RandomizedSearchCV(rf, param_distributions=param_dist, n_iter=5, cv=5)
 rand_search.fit(X_train, y_train)
 best_rf = rand_search.best_estimator_
