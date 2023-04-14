@@ -15,7 +15,7 @@ from sklearn.metrics import f1_score
 from sklearn.ensemble import RandomForestClassifier
 
 
-ete = pd.read_csv("/Users/rashm/mlops/bhutan_landslide_data.csv")
+ete = pd.read_csv("./data/bhutan_landslide_data.csv")
 ete["Type"] = ete["Type"].astype("category")
 ete = ete.drop(["Type"], axis=1)
 
