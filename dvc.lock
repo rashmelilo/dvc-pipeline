@@ -1,0 +1,12 @@
+schema: '2.0'
+stages:
+  training:
+    cmd: python src/code.py
+    deps:
+    - path: data/bhutan_landslide_data.csv
+      md5: 41938e7ed4bb195597f26d60fec4361a
+      size: 41401
+    outs:
+    - path: models/model.pkl
+      md5: d3722655adfec8d4ec182a3d2d0b41b4
+      size: 657

@@ -1,0 +1,7 @@
+stages:
+  training:
+    cmd: python src/code.py
+    deps:
+      - data/bhutan_landslide_data.csv
+    outs:
+      - models/model.pkl
