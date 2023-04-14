@@ -1,13 +1,5 @@
 name: landslide_prediction
-on: 
-  workflow_dispatch:
-    inputs:
-      name:
-        required: false
-        default: "run"
-        description: "CI CD run for classification model"
-
-  push:
+on: [push]
 
 jobs:
   run:
@@ -21,17 +13,17 @@ jobs:
         run: |
           pip install -r requirements.txt
           dvc repro
-          echo "## Model Metrics" > report.md
-          cat metrics.txt >> report.md
-          echo "\n ## Model performance plot" >> report.md
-          cml-publish model_results.png --md >> report.md
+          git fetch --prune
+          
+          echo "## Model Metrics : Comparing with master branch"
+          dvc metrics diff --show-md master > report.md          
           cml-send-comment report.md
       - name: Get changes
         run: |
           git status -uno
       - uses: EndBug/add-and-commit@v7
         with:
-          add: report.md metrics.txt model_results.png
+          add: metrics.json
           author_name: CI-CD Pipeline run
-          author_email: pateldevarsh1206@gmail.com
+          author_email: rashmelilo123@gmail.com
           message: "adding results from run"
