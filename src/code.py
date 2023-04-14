@@ -1,5 +1,8 @@
+import json
 import pandas as pd
 from sklearn.metrics import (
+    precision_score,
+    recall_score,
     confusion_matrix,
     accuracy_score,
 )
@@ -66,5 +69,20 @@ print("Best hyperparameters:", rand_search.best_params_)
 y_pred = best_rf.predict(X_test)
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
+
+
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1score = f1_score(y_test, y_pred)
+
+metrics = {
+    'precision': precision,
+    'accuracy': accuracy,
+    'recall': recall,
+    'f1_score': f1score
+}
+
+json.dump(metrics, open("metrics.json", 'w'))
 
 pickle.dump(rf, open('models/model.pkl', 'wb'))

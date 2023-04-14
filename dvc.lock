@@ -7,6 +7,9 @@ stages:
       md5: 41938e7ed4bb195597f26d60fec4361a
       size: 41401
     outs:
+    - path: metrics.json
+      md5: 4ea59d2275476b0da8774902ca552d19
+      size: 125
     - path: models/model.pkl
       md5: d3722655adfec8d4ec182a3d2d0b41b4
       size: 657

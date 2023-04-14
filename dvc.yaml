@@ -5,3 +5,6 @@ stages:
       - data/bhutan_landslide_data.csv
     outs:
       - models/model.pkl
+    metrics:
+      - metrics.json:
+          cache: false
