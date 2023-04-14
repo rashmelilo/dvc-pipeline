@@ -1,3 +1,4 @@
+import os
 import json
 import pandas as pd
 from sklearn.metrics import (
@@ -85,4 +86,5 @@ metrics = {
 
 json.dump(metrics, open("metrics.json", 'w'))
 
+os.makedirs("models", exist_ok=True)
 pickle.dump(rf, open('models/model.pkl', 'wb'))
